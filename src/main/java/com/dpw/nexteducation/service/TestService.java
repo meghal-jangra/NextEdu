@@ -1,0 +1,27 @@
+package com.dpw.nexteducation.service;
+
+import com.dpw.nexteducation.entity.Test;
+import com.dpw.nexteducation.repository.TestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class TestService {
+
+    @Autowired
+    private TestRepository testRepository;
+
+
+    public List<Test> getAllTest() {
+        List<Test> tests = new ArrayList<>();
+        testRepository.findAll().forEach(tests::add);
+        return tests;
+    }
+
+    public void addTest(Test test) {
+        testRepository.save(test);
+    }
+}
