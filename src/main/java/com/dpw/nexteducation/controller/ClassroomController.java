@@ -24,9 +24,6 @@ public class ClassroomController {
         classroomService.addClassroom(classroom);
     }
 
-    @PutMapping("/{classroomId}/test/{testId}")
-    public Classroom enrolledStudentToSubject(@PathVariable int classroomId, @PathVariable int testId){
-        return classroomService.giveTest(classroomId,testId);
-    }
+
 
 }

@@ -26,6 +26,21 @@ public class Student extends User{
     @JoinColumn(name = "classroom_id", referencedColumnName = "id")
     private Classroom classroom;
 
+    @ManyToMany
+    @JoinTable(
+            name = "test_given",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "test_id")
+    )
+    private Set<Test> givenTest = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "student")
+    private Set<Result> results = new HashSet<>();
+
+    public void giveTest(Test test) {
+        givenTest.add(test);
+    }
     public void assignClassroom(Classroom classroom) {
         this.classroom = classroom;
     }

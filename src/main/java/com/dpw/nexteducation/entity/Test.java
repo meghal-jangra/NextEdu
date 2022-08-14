@@ -21,7 +21,18 @@ public class Test {
     @Column(name = "id", nullable = false)
     private int id;
     private String category;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "givenTest")
-    private Set<Classroom> subjects = new HashSet<>();
+    private Set<Student> students = new HashSet<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "testId")
+    private Result result;
+
+    public void declareResult(Result result){
+        this.result = result;
+    }
+
+
 }

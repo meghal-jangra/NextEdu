@@ -23,4 +23,10 @@ public class TestController {
     public void addTest(@RequestBody Test test){
         testService.addTest(test);
     }
+
+    @PutMapping("/{testId}/result/{resultId}")
+    public Test declareResultToTest(@PathVariable int testId, @PathVariable int resultId){
+        return testService.declareResultToTest(testId,resultId);
+    }
+
 }

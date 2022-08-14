@@ -1,5 +1,6 @@
 package com.dpw.nexteducation.controller;
 
+import com.dpw.nexteducation.entity.Classroom;
 import com.dpw.nexteducation.entity.Student;
 import com.dpw.nexteducation.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/students/produces", produces = "application/vnd.nextEdu.app-v1+json")
+@RequestMapping(value = "/api/v1/students")
 public class StudentController {
 
     @Autowired
@@ -48,5 +49,8 @@ public class StudentController {
     public Student assignClassroomToStudent(@PathVariable int studentId, @PathVariable int classroomId){
         return studentService.assignClassroom(studentId,classroomId);
     }
-
+    @PutMapping("/{studentId}/test/{testId}")
+    public Student assignTestToStudent(@PathVariable int studentId, @PathVariable int testId){
+        return studentService.giveTest(studentId,testId);
+    }
 }

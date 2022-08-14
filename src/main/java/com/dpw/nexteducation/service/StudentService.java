@@ -1,9 +1,11 @@
 package com.dpw.nexteducation.service;
 
 import com.dpw.nexteducation.entity.Classroom;
+import com.dpw.nexteducation.entity.Test;
 import com.dpw.nexteducation.repository.ClassroomRepository;
 import com.dpw.nexteducation.entity.Student;
 import com.dpw.nexteducation.repository.StudentRepository;
+import com.dpw.nexteducation.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class StudentService {
     @Autowired
     private ClassroomRepository classroomRepository;
 
+    @Autowired
+    private TestRepository testRepository;
     public List<Student> getAllStudents(){
 
         List<Student> students = new ArrayList<>();
@@ -28,7 +32,6 @@ public class StudentService {
     }
 
     public Student getStudent(int id){
-        
         return studentRepository.findById(id).get();
     }
 
@@ -53,6 +56,12 @@ public class StudentService {
         Student student = studentRepository.findById(studentId).get();
         Classroom classroom = classroomRepository.findById(classroomId).get();
         student.assignClassroom(classroom);
+        return studentRepository.save(student);
+    }
+    public Student giveTest(int studentId, int testId) {
+        Student student = studentRepository.findById(studentId).get();
+        Test test = testRepository.findById(testId).get();
+        student.giveTest(test);
         return studentRepository.save(student);
     }
 }

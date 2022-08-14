@@ -25,15 +25,7 @@ public class Classroom {
     @JsonIgnore
     private Set<Student> enrolledStudents = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "test_given",
-            joinColumns = @JoinColumn(name = "classroom_id"),
-            inverseJoinColumns = @JoinColumn(name = "test_id")
-    )
-    private Set<Test> givenTest = new HashSet<>();
 
-    public void giveTest(Test test) {
-        givenTest.add(test);
-    }
+
+
 }

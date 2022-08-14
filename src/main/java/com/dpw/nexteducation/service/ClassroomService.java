@@ -30,10 +30,5 @@ public class ClassroomService {
         classroomRepository.save(classroom);
     }
 
-    public Classroom giveTest(int classroomId, int testId) {
-        Classroom classroom = classroomRepository.findById(classroomId).get();
-        Test test = testRepository.findById(testId).get();
-        classroom.giveTest(test);
-        return classroomRepository.save(classroom);
-    }
+
 }

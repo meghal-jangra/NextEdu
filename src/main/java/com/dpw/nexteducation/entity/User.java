@@ -12,15 +12,11 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class User {
     @Id
     @Column(name = "id", nullable = false)
     private int id;
-
     private String name;
-
     private String address;
-
-
-
 }
