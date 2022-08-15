@@ -2,6 +2,7 @@ package com.dpw.nexteducation.service;
 
 import com.dpw.nexteducation.entity.Classroom;
 import com.dpw.nexteducation.entity.Test;
+import com.dpw.nexteducation.exception.ResourceNotFoundException;
 import com.dpw.nexteducation.repository.ClassroomRepository;
 import com.dpw.nexteducation.entity.Student;
 import com.dpw.nexteducation.repository.StudentRepository;
@@ -32,7 +33,7 @@ public class StudentService {
     }
 
     public Student getStudent(int id){
-        return studentRepository.findById(id).get();
+        return studentRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Student not found with id:" + id));
     }
 
 
