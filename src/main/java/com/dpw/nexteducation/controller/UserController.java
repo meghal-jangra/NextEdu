@@ -1,8 +1,10 @@
 package com.dpw.nexteducation.controller;
 
+import com.dpw.nexteducation.dto.UserDto;
 import com.dpw.nexteducation.entity.User;
 import com.dpw.nexteducation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user){
-        userService.addUser(user);
+    public ResponseEntity<User> addUser(@RequestBody UserDto userDto){
+        return userService.addUser(userDto);
     }
 
     @PutMapping("/{id}")
